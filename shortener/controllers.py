@@ -21,7 +21,7 @@ def visit(short):
     """Fixme This should be done in the function itself,
         with custom exceptions, etc.
     """
-    if set(short).intersection(current_app.config['EXCLUDED_CHARACTERS']) > 0:
+    if len(set(short).intersection(current_app.config['EXCLUDED_CHARACTERS'])) > 0:
         return Response(
             status=400,
             response={'message': 'Invalid character(s) in url short code'},
