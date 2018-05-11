@@ -55,32 +55,42 @@ actually run API
 python app.py
 ```
 
-You can check if app's running by visiting next link:
+You can check if app's running by visiting next link (since port 5000 is forwarded it's easy to access via localhost):
 
-[http://192.168.55.56:5000/api/](http://192.168.55.56:5000/api/)
+[http://localhost:5000/](http://localhost:5000/)
 
-Default admin user should already be created try /login/ using next credentials via cURL:
+Open second terminal and try to create short url via cURL:
 
 ```
 curl -X POST \
-  http://192.168.55.56:5000/api/login/ \
+  http://localhost:5000/shorten/ \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
   -d '{
-        "email": "admin@maildrop.cc",
-        "password": "admin"
-}'
+        "url": "http://www.google.com"
+        }'
+```
+
+You should get short link in response that looks like http://localhost/3
+
+*To solve ultra short first urls, since the logic is to convert IDs, we could set primary key to go from some larger number*
+
+To test if it works try next command in the terminalL
+
+```
+curl http://localhost:5000/3 -v
 ```
 
 ## Docs
 
-To see docs visit next link:
-
-[http://192.168.55.56:5000/apidocs/](http://192.168.55.56:5000/apidocs/)
+TBD
 
 ## Running the tests
 
-TBD
+There're just basic unittests which can be run by (from project root with virtual env activated):
+```
+python shortener/tests.py
+```
 
 ### Break down into end to end tests
 
