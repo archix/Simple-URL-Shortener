@@ -1,0 +1,10 @@
+*.pyc
+*.log
+
+# virtualenv
+.env
+
+# Pycharm
+.idea
+
+.vagrant/
